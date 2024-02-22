@@ -30,7 +30,7 @@ const DoctorCard = ({ doctor }) => {
         </span>
 
         <div className="flex items-center gap-[6px]">
-          <span className="flex items-center gap-[6px] text-[14px] leading-6 lg:text-[16px] leading-7 font-semibold text-headingColor">
+          <span className="flex items-center gap-[6px] text-[14px] leading-6 lg:text-[16px] font-semibold text-headingColor">
             <img src={starIcon} alt="" />
             {avgRating}
           </span>
