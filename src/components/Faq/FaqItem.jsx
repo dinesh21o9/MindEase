@@ -21,7 +21,7 @@ const FaqItem = ({ item }) => {
 
         <div
           className={`${
-            isOpen && "bg-primaryColor text-white border-none"
+            isOpen && "bg-lime-500 text-white border-none"
           }  w-7 h-7 lg:w-8 lg:h-8 rounded border border-solid border-[#141F21] flex items-center justify-center`}
         >
           {isOpen ? <AiOutlineMinus /> : <AiOutlinePlus />}

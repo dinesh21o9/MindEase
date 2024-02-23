@@ -86,7 +86,7 @@ const Footer = () => {
                 <Link
                   key={index}
                   to={link.path}
-                  className=" w-[36px] h-[36px] rounded-full border border-solid border-[#181A1E] flex  items-center justify-center  group hover:bg-[#0067FF] hover:border-none"
+                  className=" w-[36px] h-[36px] rounded-full border border-solid border-[#181A1E] flex  items-center justify-center  group hover:bg-lime-500 hover:border-none"
                 >
                   {link.icon}
                 </Link>
