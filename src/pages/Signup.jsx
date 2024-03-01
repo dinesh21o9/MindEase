@@ -1,11 +1,16 @@
 import React from "react";
 import signupImg from "../assets/images/signup.gif";
 import avatar from "../assets/images/doctor-img01.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import uploadImageToCloudinary from "../utils/uploadCloudinary";
+import { BASE_URL } from "../config";
+import { toast } from "react-toastify";
+import HashLoader from "react-spinners/HashLoader";
 const Signup = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-
+  const [previewURL, setPreviewURL] = useState("");
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,6 +19,8 @@ const Signup = () => {
     role: "patient",
     photo: selectedFile,
   });
+
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setFormData({
@@ -25,11 +32,39 @@ const Signup = () => {
   const handleFileInputChange = async (event) => {
     const file = event.target.files[0];
 
-    console.log(file);
+    const data = await uploadImageToCloudinary(file);
+
+    setSelectedFile(data.url);
+    setPreviewURL(data.url);
+    setFormData({ ...formData, photo: data.url });
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
+    setLoading(true);
+
+    try {
+      const res = await fetch(`${BASE_URL}/auth/register`, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const { message } = await res.json();
+
+      if (res.status === 400) {
+        throw new Error(message);
+      }
+
+      setLoading(false);
+      toast.success(message);
+      navigate("/login");
+    } catch (error) {
+      toast.error(error.message);
+      setLoading(false);
+    }
   };
 
   return (
@@ -102,22 +137,28 @@ const Signup = () => {
                 <label className="text-headingColor font-bold text-[16px] leading-7">
                   Are you a:
                   <select
-                    name="role"
+                    name="gender"
                     value={formData.gender}
                     onChange={handleInputChange}
                     className="text-textColor font-semibold text-[15px] leading-7 px-4 py-3 focus:outline-none"
                     required
                   >
-                    <option value="patient">Male</option>
-                    <option value="doctor">Female</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
                   </select>
                 </label>
               </div>
 
               <div className="mb-5 flex items-center gap-3">
-                <figure className="w-[60px] h-[60px] rounded-full border-2 border-solid border-lime-500 flex items-center">
-                  <img src={avatar} alt="" className="w-full rounded-full" />
-                </figure>
+                {selectedFile && (
+                  <figure className="w-[60px] h-[60px] rounded-full border-2 border-solid border-lime-500 flex items-center">
+                    <img
+                      src={previewURL}
+                      alt="Preview"
+                      className="w-full rounded-full"
+                    />
+                  </figure>
+                )}
                 <div className="relative w-[130px] h-[50px]">
                   <input
                     type="file"
@@ -125,24 +166,29 @@ const Signup = () => {
                     id="customFile"
                     onChange={handleFileInputChange}
                     accept=".jpg, .png"
-                    className="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
+                    className="custom-file-input absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer"
                   />
 
                   <label
                     className="custom-file-label absolute top-0 left-0 w-full h-full flex items-center px-[0.75rem] py-[0.375rem] text-[15px] leading-6 overflow-hidden bg-[#1bcc20] text-headingColor font-semibold rounded-lg truncate cursor-pointer"
                     htmlFor="customFile"
                   >
-                    Upload Photo
+                    {selectedFile ? selectedFile.name : "Upload photo"}
                   </label>
                 </div>
               </div>
 
               <div className="mt-7">
                 <button
+                  disabled={loading && true}
                   type="submit"
                   className="w-full bg-[#1bcc20] text-white py-3 px-4 rounded-lg text-[18px] leading-[30px]"
                 >
-                  Sign up
+                  {loading ? (
+                    <HashLoader siza={35} color="#ffffff" />
+                  ) : (
+                    "Sign up"
+                  )}
                 </button>
               </div>
 

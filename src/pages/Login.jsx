@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-// import { BASE_URL } from "../config";
-// import { AuthContext } from "../context/AuthContext";
-// import { toast } from "react-toastify";
-// import HashLoader from "react-spinners/HashLoader";
+import { BASE_URL } from "../config";
+import { AuthContext } from "../context/AuthContext.jsx";
+import { toast } from "react-toastify";
+import HashLoader from "react-spinners/HashLoader";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -11,9 +11,53 @@ const Login = () => {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  const { dispatch } = useContext(AuthContext);
+
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    try {
+      const res = await fetch(`${BASE_URL}/auth/login`, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await res.json();
+      if (!res.ok) {
+        throw new Error(result.message);
+      }
+
+      dispatch({
+        type: "LOGIN_SUCCESS",
+        payload: {
+          user: result.data,
+          token: result.token,
+          role: result.role,
+        },
+      });
+
+      setLoading(false);
+      toast.success(result.message);
+      navigate("/home");
+    } catch (error) {
+      toast.error(error.message);
+      setLoading(false);
+    }
+  };
+
   return (
     <section className="px-5 md:px-0">
       <div className=" w-full max-w-[570px] mx-auto rounded-lg shadow-lg md:p-10">
@@ -22,7 +66,7 @@ const Login = () => {
             Hello! <span className="text-[#0067FF]">Welcome</span>
           </h3>
 
-          <form className="py-4 md:py-0">
+          <form className="py-4 md:py-0" onSubmit={handleSubmit}>
             <div className="mb-5 px-5">
               <input
                 type="email"
@@ -51,7 +95,7 @@ const Login = () => {
 
             <div className="mt-7 px-5">
               <button className="w-full bg-primaryColor text-white text-[18px] leading-[30px] rounded-lg px-4 py-3">
-                Login
+                {loading ? <HashLoader size={25} color="#fff" /> : "Login"}
               </button>
             </div>
 

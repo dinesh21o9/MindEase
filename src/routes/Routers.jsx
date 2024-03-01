@@ -4,10 +4,11 @@ import Login from "../pages/Login";
 import SignUp from "../pages/Signup";
 import Doctors from "../pages/Doctors/Doctors";
 import Services from "../pages/Services";
-
+import MyAccount from "../Dashboard/user-account/MyAccount";
 import DoctorDetails from "../pages/Doctors/DoctorDetails";
 import Contact from "../pages/Contact";
-
+import Dashboard from "../Dashboard/doctor-account/Dashboard";
+import ProjectedRoute from "./ProjectedRoute";
 const Routers = () => {
   return (
     <Routes>
@@ -20,6 +21,23 @@ const Routers = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<SignUp />} />
       <Route path="/contact" element={<Contact />} />
+
+      <Route
+        path="/users/profile/me"
+        element={
+          <ProjectedRoute allowedRoles={["patient"]}>
+            <MyAccount />
+          </ProjectedRoute>
+        }
+      />
+      <Route
+        path="/doctors/profile/me"
+        element={
+          <ProjectedRoute allowedRoles={["doctor"]}>
+            <Dashboard />
+          </ProjectedRoute>
+        }
+      />
     </Routes>
   );
 };
