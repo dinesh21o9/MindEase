@@ -24,6 +24,7 @@ const userFetchData = (url) => {
         }
 
         setData(result.data);
+        console.log(result.data);
         setLoading(false);
       } catch (error) {
         setLoading(false);
