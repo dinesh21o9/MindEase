@@ -9,6 +9,7 @@ import DoctorDetails from "../pages/Doctors/DoctorDetails";
 import Contact from "../pages/Contact";
 import Dashboard from "../Dashboard/doctor-account/Dashboard";
 import ProjectedRoute from "./ProjectedRoute";
+import CheckoutSuccess from "../pages/CheckoutSuccess";
 const Routers = () => {
   return (
     <Routes>
@@ -17,6 +18,7 @@ const Routers = () => {
       <Route path="/doctors" element={<Doctors />} />
       <Route path="/doctors/:id" element={<DoctorDetails />} />
       <Route path="/services" element={<Services />} />
+      <Route path="/checkout-success" element={<CheckoutSuccess />} />
 
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<SignUp />} />
