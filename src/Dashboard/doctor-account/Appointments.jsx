@@ -1,25 +1,15 @@
-import React from "react";
+/* eslint-disable react/prop-types */
 
 const Appointments = ({ appointments }) => {
   return (
     <table className="w-full text-left text-sm text-gray-500">
       <thead className="text-xs text-gray-700 uppercase bg-gray-50">
         <tr>
-          <th className="col" className="px-6 py-3">
-            Name
-          </th>
-          <th className="col" className="px-6 py-3">
-            Gender
-          </th>
-          <th className="col" className="px-6 py-3">
-            Payment
-          </th>
-          <th className="col" className="px-6 py-3">
-            Price
-          </th>
-          <th className="col" className="px-6 py-3">
-            Booked On
-          </th>
+          <th className="col px-6 py-3">Name</th>
+          <th className="col px-6 py-3">Gender</th>
+          <th className="col px-6 py-3">Payment</th>
+          <th className="col px-6 py-3">Price</th>
+          <th className="col px-6 py-3">Booked On</th>
         </tr>
       </thead>
 
