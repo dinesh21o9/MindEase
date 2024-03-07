@@ -6,7 +6,7 @@ import Testimonial from "../../components/Testimonial/Testimonial";
 import Loader from "../../components/Loader/Loading";
 import Error from "../../components/Error/Error";
 
-import { BASE_URL } from "../../config";
+import { VITE_PROD_BASE_URL } from "../../config";
 import userFetchData from "../../hooks/userFetchData";
 import HashLoader from "react-spinners/HashLoader";
 const Doctors = () => {
@@ -31,7 +31,7 @@ const Doctors = () => {
     data: doctors,
     loading,
     error,
-  } = userFetchData(`${BASE_URL}/doctors?query=${debounceQuery}`);
+  } = userFetchData(`${VITE_PROD_BASE_URL}/doctors?query=${debounceQuery}`);
 
   return (
     <>

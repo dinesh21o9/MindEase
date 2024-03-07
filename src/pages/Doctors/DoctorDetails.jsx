@@ -5,7 +5,7 @@ import DoctorAbout from "./DoctorAbout";
 import Feedback from "./Feedback";
 import SidePanel from "./SidePanel";
 
-import { BASE_URL } from "../../config";
+import { VITE_PROD_BASE_URL } from "../../config";
 import userFetchData from "../../hooks/userFetchData";
 import { useParams } from "react-router-dom";
 
@@ -20,7 +20,7 @@ const DoctorDetails = () => {
     data: doctor,
     loading,
     error,
-  } = userFetchData(`${BASE_URL}/doctors/${id}`);
+  } = userFetchData(`${VITE_PROD_BASE_URL}/doctors/${id}`);
 
   const {
     name,

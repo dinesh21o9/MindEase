@@ -2,7 +2,7 @@ import { useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { useParams } from "react-router-dom";
 
-import { BASE_URL, token } from "../../config";
+import { VITE_PROD_BASE_URL, token } from "../../config";
 import HashLoader from "react-spinners/HashLoader";
 import { toast } from "react-toastify";
 
@@ -23,7 +23,7 @@ const FeedbackForm = () => {
         setLoading(false);
         return toast.error(`Rating & Review fields are required`);
       }
-      const res = await fetch(`${BASE_URL}/doctors/${id}/reviews`, {
+      const res = await fetch(`${VITE_PROD_BASE_URL}/doctors/${id}/reviews`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",

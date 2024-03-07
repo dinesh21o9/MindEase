@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import React from "react";
 import convertTime from "../../utils/convertTime";
-import { BASE_URL, token } from "./../../config";
+import { VITE_PROD_BASE_URL, token } from "./../../config";
 
 const SidePanel = ({ doctorId, ticketPrice, timeSlots }) => {
   const bookingHandler = async () => {
     try {
       const res = await fetch(
-        `${BASE_URL}/bookings/checkout-session/${doctorId}`,
+        `${VITE_PROD_BASE_URL}/bookings/checkout-session/${doctorId}`,
         {
           method: "post",
           headers: {

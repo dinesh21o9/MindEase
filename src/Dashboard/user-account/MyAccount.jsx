@@ -6,7 +6,7 @@ import Mybooking from "./Mybooking.jsx";
 import Profile from "./Profile.jsx";
 
 import useGetProfile from "../../hooks/userFetchData.jsx";
-import { BASE_URL } from "../../config.js";
+import { VITE_PROD_BASE_URL } from "../../config.js";
 
 import Loading from "../../components/Loader/Loading.jsx";
 import Error from "../../components/Error/Error.jsx";
@@ -22,7 +22,7 @@ const MyAccount = () => {
     data: userData,
     loading,
     error,
-  } = useGetProfile(`${BASE_URL}/users/profile/me`);
+  } = useGetProfile(`${VITE_PROD_BASE_URL}/users/profile/me`);
 
   console.log(userData, "userdata");
 

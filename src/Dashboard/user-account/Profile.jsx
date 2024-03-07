@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import { BASE_URL, token } from "../../config";
+import { VITE_PROD_BASE_URL, token } from "../../config";
 import uploadImageToCloudinary from "../../utils/uploadCloudinary";
 
 import { toast } from "react-toastify";
@@ -42,7 +42,7 @@ const Profile = ({ userData }) => {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${BASE_URL}/users/${userData._id}`, {
+      const res = await fetch(`${VITE_PROD_BASE_URL}/users/${userData._id}`, {
         method: "put",
         headers: {
           "content-type": "application/json",

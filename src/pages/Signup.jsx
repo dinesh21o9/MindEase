@@ -4,7 +4,7 @@ import avatar from "../assets/images/doctor-img01.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import uploadImageToCloudinary from "../utils/uploadCloudinary";
-import { BASE_URL } from "../config";
+import { VITE_PROD_BASE_URL } from "../config";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
 const Signup = () => {
@@ -44,7 +44,7 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const res = await fetch(`${BASE_URL}/auth/register`, {
+      const res = await fetch(`${VITE_PROD_BASE_URL}/auth/register`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",

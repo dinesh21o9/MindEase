@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BASE_URL } from "../config";
+import { VITE_PROD_BASE_URL } from "../config";
 import { AuthContext } from "../context/AuthContext.jsx";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
@@ -27,7 +27,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await fetch(`${BASE_URL}/auth/login`, {
+      const res = await fetch(`${VITE_PROD_BASE_URL}/auth/login`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",

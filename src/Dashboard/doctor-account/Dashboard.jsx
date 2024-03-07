@@ -3,7 +3,7 @@ import { useState } from "react";
 import starIcon from "../../assets/images/Star.png";
 import DoctorAbout from "../../pages/Doctors/DoctorAbout";
 import useGetProfile from "../../hooks/userFetchData";
-import { BASE_URL } from "../../config";
+import { VITE_PROD_BASE_URL } from "../../config";
 import Profile from "./Profile";
 import Tabs from "./Tabs";
 import HashLoader from "react-spinners/HashLoader";
@@ -15,7 +15,7 @@ const Dashboard = () => {
     data: doctorData,
     loading,
     error,
-  } = useGetProfile(`${BASE_URL}/doctors/profile/me`);
+  } = useGetProfile(`${VITE_PROD_BASE_URL}/doctors/profile/me`);
 
   return (
     <section>
