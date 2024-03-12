@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import starIcon from "../../assets/images/Star.png";
 import DoctorAbout from "./DoctorAbout";
 import Feedback from "./Feedback";
 import SidePanel from "./SidePanel";
 
-import { VITE_PROD_BASE_URL } from "../../config";
+import { BASE_URL } from "../../config";
 import userFetchData from "../../hooks/userFetchData";
 import { useParams } from "react-router-dom";
 
@@ -20,7 +20,7 @@ const DoctorDetails = () => {
     data: doctor,
     loading,
     error,
-  } = userFetchData(`${VITE_PROD_BASE_URL}/doctors/${id}`);
+  } = userFetchData(`${BASE_URL}/doctors/${id}`);
 
   const {
     name,
@@ -76,8 +76,7 @@ const DoctorDetails = () => {
                 <button
                   onClick={() => setTab("about")}
                   className={`${
-                    tab === "about" &&
-                    "border-b border-solid border-primaryColor "
+                    tab === "about" && "border-b border-solid border-lime-700 "
                   } py-2 pr-5 text-[16px] leading-7 text-headingColor font-semibold`}
                 >
                   About
@@ -86,7 +85,7 @@ const DoctorDetails = () => {
                   onClick={() => setTab("feedback")}
                   className={` ${
                     tab === "feedback" &&
-                    "border-b border-solid border-primaryColor "
+                    "border-b border-solid border-lime-700 "
                   } py-2 pr-5 text-[16px] leading-7 text-headingColor font-semibold`}
                 >
                   Feedback

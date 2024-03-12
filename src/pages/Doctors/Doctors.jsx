@@ -1,18 +1,24 @@
 import { useEffect, useState } from "react";
-import { doctors } from "../../assets/data/doctors";
+
 import DoctorCard from "../../components/Doctors/DoctorCard";
 import Testimonial from "../../components/Testimonial/Testimonial";
 
 import Loader from "../../components/Loader/Loading";
 import Error from "../../components/Error/Error";
 
-import { VITE_PROD_BASE_URL } from "../../config";
+import { BASE_URL } from "../../config";
 import userFetchData from "../../hooks/userFetchData";
-import HashLoader from "react-spinners/HashLoader";
+
 const Doctors = () => {
   const [query, setQuery] = useState("");
 
   const [debounceQuery, setDebounceQuery] = useState("");
+
+  const {
+    data: doctors,
+    loading,
+    error,
+  } = userFetchData(`${BASE_URL}/doctors?query=${debounceQuery}`);
 
   const handleSearch = () => {
     setQuery(query.trim());
@@ -26,12 +32,6 @@ const Doctors = () => {
 
     return () => clearTimeout(timeout);
   }, [query]);
-
-  const {
-    data: doctors,
-    loading,
-    error,
-  } = userFetchData(`${VITE_PROD_BASE_URL}/doctors?query=${debounceQuery}`);
 
   return (
     <>

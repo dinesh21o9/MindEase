@@ -4,7 +4,7 @@ import avatar from "../assets/images/doctor-img01.png";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import uploadImageToCloudinary from "../utils/uploadCloudinary";
-import { VITE_PROD_BASE_URL } from "../config";
+import { BASE_URL } from "../config";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
 const Signup = () => {
@@ -44,7 +44,7 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const res = await fetch(`${VITE_PROD_BASE_URL}/auth/register`, {
+      const res = await fetch(`${BASE_URL}/auth/register`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -170,7 +170,7 @@ const Signup = () => {
                   />
 
                   <label
-                    className="custom-file-label absolute top-0 left-0 w-full h-full flex items-center px-[0.75rem] py-[0.375rem] text-[15px] leading-6 overflow-hidden bg-[#1bcc20] text-headingColor font-semibold rounded-lg truncate cursor-pointer"
+                    className="custom-file-label absolute top-0 left-0 w-full h-full flex items-center px-[0.75rem] py-[0.375rem] text-[15px] leading-6 overflow-hidden bg-[#1bcc20] text-white font-semibold rounded-lg truncate cursor-pointer"
                     htmlFor="customFile"
                   >
                     {selectedFile ? selectedFile.name : "Upload photo"}
@@ -194,7 +194,7 @@ const Signup = () => {
 
               <p className="mt-5 text-textColor text-center">
                 Already have an account?{" "}
-                <Link to="/login" className="text-[#1bcc20] font-medium">
+                <Link to="/login" className="text-lime-600 font-medium">
                   Login
                 </Link>
               </p>

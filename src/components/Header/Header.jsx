@@ -1,9 +1,8 @@
-import React, { useContext, useEffect, useRef } from "react";
 import logo from "../../assets/images/logo.png";
-import { NavLink, Link } from "react-router-dom";
-import userImg from "../../assets/images/avatar-icon.png";
+import { useContext, useEffect, useRef } from "react";
 import { BiMenu } from "react-icons/bi";
 import { AuthContext } from "../../context/AuthContext.jsx";
+import { NavLink, Link } from "react-router-dom";
 const navLinks = [
   {
     path: "/home",

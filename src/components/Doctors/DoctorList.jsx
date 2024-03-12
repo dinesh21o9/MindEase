@@ -1,5 +1,5 @@
 import DoctorCard from "./DoctorCard";
-import { VITE_PROD_BASE_URL } from "../../config";
+import { BASE_URL } from "../../config";
 import userFetchData from "../../hooks/userFetchData";
 import Loader from "../../components/Loader/Loading";
 import Error from "../../components/Error/Error";
@@ -8,7 +8,7 @@ const DoctorList = () => {
     data: doctors,
     loading,
     error,
-  } = userFetchData(`${VITE_PROD_BASE_URL}/doctors`);
+  } = userFetchData(`${BASE_URL}/doctors`);
   return (
     <>
       {loading && <Loader />}

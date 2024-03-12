@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable react/prop-types */
+import { useState } from "react";
 
 import { formateDate } from "../../utils/formateDate";
 import { AiFillStar } from "react-icons/ai";
@@ -23,7 +24,7 @@ const Feedback = ({ reviews, totalRating }) => {
                 </figure>
 
                 <div>
-                  <h5 className="text-[16px ] leading-6 text-primaryColor font-bold">
+                  <h5 className="text-[16px ] leading-6 text-lime-600 font-bold">
                     {review?.user?.name}
                   </h5>
                   <p className="text-[14px] leading-6 text-textColor">
@@ -37,7 +38,7 @@ const Feedback = ({ reviews, totalRating }) => {
 
               <div className="flex gap-1">
                 {[...Array(review?.rating).keys()].map((_, index) => (
-                  <AiFillStar key={index} color="#0067ff" />
+                  <AiFillStar key={index} color="#1bcc20" />
                 ))}
               </div>
             </div>

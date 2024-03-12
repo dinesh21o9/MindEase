@@ -1,5 +1,5 @@
 import useFetchData from "../../hooks/userFetchData";
-import { VITE_PROD_BASE_URL } from "../../config";
+import { BASE_URL } from "../../config";
 import DoctorCard from "./../../components/Doctors/DoctorCard";
 import Loading from "../../components/Loader/Loading";
 import Error from "../../components/Error/Error";
@@ -8,7 +8,7 @@ const Mybooking = () => {
     data: appointments,
     loading,
     error,
-  } = useFetchData(`${VITE_PROD_BASE_URL}/users/appointments/my-appointments`);
+  } = useFetchData(`${BASE_URL}/users/appointments/my-appointments`);
   return (
     <div>
       {loading && !error && <Loading />}

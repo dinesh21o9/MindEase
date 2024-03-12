@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import { VITE_PROD_BASE_URL, token } from "../../config";
+import { BASE_URL, token } from "../../config";
 import uploadImageToCloudinary from "../../utils/uploadCloudinary";
 import { AiOutlineDelete } from "react-icons/ai";
 
@@ -58,18 +58,15 @@ const Profile = ({ doctorData }) => {
     e.preventDefault();
     console.log(formData);
     try {
-      const res = await fetch(
-        `${VITE_PROD_BASE_URL}/doctors/${doctorData._id}`,
-        {
-          method: "put",
-          headers: {
-            "content-type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
+      const res = await fetch(`${BASE_URL}/doctors/${doctorData._id}`, {
+        method: "put",
+        headers: {
+          "content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
 
-          body: JSON.stringify(formData),
-        }
-      );
+        body: JSON.stringify(formData),
+      });
 
       const result = await res.json();
       if (!res.ok) {

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 //context api
 import { createContext, useEffect, useReducer } from "react";
 
