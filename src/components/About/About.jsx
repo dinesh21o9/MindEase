@@ -17,20 +17,14 @@ function About() {
           </div>
           {/* about content */}
           <div className="w-full lg:w-1/2 xl:w-[670px] order-1 lg:order-2">
-            <h2 className="heading">Proud to be one of the best</h2>
+            <h2 className="heading">Assess Your Well-being with Confidence</h2>
             <p className="text__para">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Assumenda optio sapiente laudantium, fugiat quae laboriosam
-              blanditiis fuga quam deleniti cupiditate eius inventore voluptas
-              ut debitis!
+              Our website offers a safe and confidential space where users can access 
+              mental health assessment tools designed to provide insights into their 
+              well-being. By delivering comprehensive and accurate evaluations, this 
+              platform fosters proactive self-awareness and supports individuals in 
+              understanding their cognitive and emotional states.
             </p>
-            <p className="text__para mt-[30px]">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolores
-              sapiente odio fugiat quasi eum hic est accusantium maiores nam id.
-            </p>
-            <Link to="/">
-              <button className="btn">Learn more</button>
-            </Link>
           </div>
         </div>
       </div>

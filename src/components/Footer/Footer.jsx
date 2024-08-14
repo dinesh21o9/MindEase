@@ -14,7 +14,7 @@ const socialLinks = [
   },
 
   {
-    path: "www.linkedin.com/in/hye-mee-park",
+    path: "https://www.linkedin.com/in/ashwani-selwal-a177a6220/",
     icon: <RiLinkedinFill className="group-hover:text-white w-4 h-5" />,
   },
 ];
@@ -32,36 +32,24 @@ const quickLinks01 = [
     path: "/services",
     display: "Services",
   },
-  {
-    path: "/",
-    display: "Blog",
-  },
 ];
 
 const quickLinks02 = [
   {
-    path: "/find-a-doctor",
-    display: "Find a Doctor",
+    path: "/",
+    display: "Take Depression Test",
   },
   {
     path: "/",
-    display: "Request an Appointment",
+    display: "Take PTSD Test",
   },
   {
     path: "/",
-    display: "Find a Location",
-  },
-  {
-    path: "/",
-    display: "Get a Opinion",
+    display: "Take Anxiety Test",
   },
 ];
 
 const quickLinks03 = [
-  {
-    path: "/",
-    display: "Donate",
-  },
   {
     path: "/contact",
     display: "Contact Us",
@@ -78,7 +66,7 @@ const Footer = () => {
           <div>
             <img src={logo} alt="" />
             <p className="text-[16px] leading-7 font-[400] text-textColor mt-4">
-              Copyright © {year} developed by Hye Mee Park all rights reserved.
+              Copyright © {year} developed by Ashwani Selwal. All rights reserved.
             </p>
 
             <div className="flex items-center gap-3 mt-4">

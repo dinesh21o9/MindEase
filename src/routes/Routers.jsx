@@ -15,30 +15,14 @@ const Routers = () => {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
-      <Route path="/doctors" element={<Doctors />} />
+      {/* <Route path="/doctors" element={<Doctors />} /> */}
 
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<SignUp />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/doctors/:id" element={<DoctorDetails />} />
+      {/* <Route path="/contact" element={<Contact />} /> */}
+      {/* <Route path="/doctors/:id" element={<DoctorDetails />} /> */}
       <Route path="/services" element={<Services />} />
-      <Route path="/checkout-success" element={<CheckoutSuccess />} />
-      <Route
-        path="/users/profile/me"
-        element={
-          <ProjectedRoute allowedRoles={["patient"]}>
-            <MyAccount />
-          </ProjectedRoute>
-        }
-      />
-      <Route
-        path="/doctors/profile/me"
-        element={
-          <ProjectedRoute allowedRoles={["doctor"]}>
-            <Dashboard />
-          </ProjectedRoute>
-        }
-      />
+      {/* <Route path="/checkout-success" element={<CheckoutSuccess />} /> */}
     </Routes>
   );
 };
