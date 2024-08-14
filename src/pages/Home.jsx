@@ -33,7 +33,11 @@ const Home = () => {
                   curated by professional doctors to evaluate your mental health, 
                   offering a comprehensive report on your current mental state.
                 </p>
-                <button className="btn">Take test </button>
+                <Link to="/services">
+                  <button className="btn">
+                    Take test
+                  </button>
+                </Link>
               </div>
 
               <div className="mt-[30px] lg:mt-[70px] flex flex-col md:flex-row lg:items-center gap-5 lg:gap-[30px]">

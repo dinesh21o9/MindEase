@@ -1,7 +1,7 @@
 export const services = [
   {
     name: "Depression Test",
-    desc: "For people experiencing overwhelming sadness or despair, low energy, or negative self-image.",
+    desc: "For people experiencing overwhelming sadness, low energy, or negative self-image. It can manifest in various ways, such as sleep patterns, energy levels.",
     bgColor: "rgba(254, 182, 13, .2)",
     textColor: "#FEB60D",
   },
