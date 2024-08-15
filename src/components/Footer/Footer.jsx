@@ -36,15 +36,15 @@ const quickLinks01 = [
 
 const quickLinks02 = [
   {
-    path: "/",
+    path: "/test/depression",
     display: "Take Depression Test",
   },
   {
-    path: "/",
+    path: "/test/ptsd",
     display: "Take PTSD Test",
   },
   {
-    path: "/",
+    path: "/test/anxiety",
     display: "Take Anxiety Test",
   },
 ];

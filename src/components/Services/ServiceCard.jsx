@@ -4,7 +4,9 @@ import { BsArrowRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
 const ServiceCard = ({ item, index }) => {
-  const { name, desc, bgColor, textColor } = item;
+  const { name, desc, bgColor, textColor , type} = item;
+  console.log(item.type);
+
 
   return (
     <div className="py-[30px] px-3 lg:px-5">
@@ -17,11 +19,14 @@ const ServiceCard = ({ item, index }) => {
 
       <div className="flex items-center justify-between mt-[30px]">
         <Link
-          to="/doctors"//To Change
+          to={`/test/${type}`}//To Change
           className="w-[44px] h-[44px] rounded-full border border-solid border-[#181a1e] mt-[30px] mx-auto flex items-center justify-center group hover:bg-lime-500 hover:border-none"
         >
+
           <BsArrowRight className="group-hover:text-white w-6 h-5" />
-        </Link>
+
+
+        </Link> 
         <span
           className="w-[44px] h-[44px] flex items-center justify-center text-[18px] leading-[30px] font-[600] "
           style={{

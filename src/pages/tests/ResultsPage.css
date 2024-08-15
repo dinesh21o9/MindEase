@@ -1,0 +1,25 @@
+.results-container {
+    padding: 20px;
+    text-align: center;
+    background-color: #e4dede;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 50px auto;
+  }
+  
+  .result-score {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .score-value {
+    font-size: 36px;
+    font-weight: bold;
+    color: #d9534f;
+  }
+  
+  .analysis-text {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
