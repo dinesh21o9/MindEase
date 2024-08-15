@@ -10,6 +10,12 @@ import Contact from "../pages/Contact";
 import Dashboard from "../Dashboard/doctor-account/Dashboard";
 import ProjectedRoute from "./ProjectedRoute";
 import CheckoutSuccess from "../pages/CheckoutSuccess";
+import Depression from "../pages/tests/Depression"
+import Anxiety from "../pages/tests/Anxiety"
+import ResultsPage from "../pages/tests/Results";
+import PTSDTest from "../pages/tests/PTSD";
+
+
 const Routers = () => {
   return (
     <Routes>
@@ -20,8 +26,12 @@ const Routers = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<SignUp />} />
       {/* <Route path="/contact" element={<Contact />} /> */}
-      {/* <Route path="/doctors/:id" element={<DoctorDetails />} /> */}
+      <Route path="/doctors/:id" element={<DoctorDetails />} />
       <Route path="/services" element={<Services />} />
+      <Route path="/test/depression" element={<Depression />} />
+      <Route path="/test/anxiety" element={<Anxiety />} />
+      <Route path="/test/ptsd" element={<PTSDTest />} />
+      <Route path="/results" element={<ResultsPage />} />
       {/* <Route path="/checkout-success" element={<CheckoutSuccess />} /> */}
     </Routes>
   );

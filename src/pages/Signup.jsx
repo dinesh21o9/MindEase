@@ -1,67 +1,98 @@
-import React from "react";
+// import React from "react";
 import signupImg from "../assets/images/signup.gif";
 import avatar from "../assets/images/doctor-img01.png";
-import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+// import { Link, useNavigate } from "react-router-dom";
+// import { useState } from "react";
 import uploadImageToCloudinary from "../utils/uploadCloudinary";
-import { BASE_URL } from "../config";
+// import { BASE_URL } from "../config";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
+
+
+import React, { useState, useEffect } from 'react';
+import { useNavigate ,Link} from 'react-router-dom'; 
+import '../assets/css/RegiForm.css';
+import { FaUserTie, FaLock } from 'react-icons/fa';
+import axios from 'axios';
+
+const BASE_URL = "http://localhost:7000"
+
 const Signup = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewURL, setPreviewURL] = useState("");
   const [loading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
-    gender: "",
-    role: "patient",
-    photo: selectedFile,
+    confirmPassword: '',
+    // gender: "",
+    // role: "patient",
+    // photo: selectedFile,
   });
 
   const navigate = useNavigate();
 
   const handleInputChange = (e) => {
+    // const { name, value } = e.target;
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleFileInputChange = async (event) => {
-    const file = event.target.files[0];
+  // const handleFileInputChange = async (event) => {
+  //   const file = event.target.files[0];
 
-    const data = await uploadImageToCloudinary(file);
+  //   const data = await uploadImageToCloudinary(file);
 
-    setSelectedFile(data.url);
-    setPreviewURL(data.url);
-    setFormData({ ...formData, photo: data.url });
-  };
+  //   setSelectedFile(data.url);
+  //   setPreviewURL(data.url);
+  //   setFormData({ ...formData, photo: data.url });
+  // };
 
   const submitHandler = async (e) => {
     e.preventDefault();
     setLoading(true);
 
+    // try {
+    //   const res = await fetch(`${BASE_URL}/auth/register`, {
+    //     method: "post",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(formData),
+    //   });
+
+    //   const { message } = await res.json();
+
+    //   if (res.status === 400) {
+    //     throw new Error(message);
+    //   }
+
     try {
-      const res = await fetch(`${BASE_URL}/auth/register`, {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      if(formData.password === formData.confirmPassword){
+          const response = await axios.post(`${BASE_URL}/regis`, formData);
+          
+          
+          console.log('Success:', response.data);
+  
+          setLoading(false);
+          if(response.data.isOk){
+            toast.success(response.data.message);
+            navigate('/login'); 
+          }else{
+              throw new Error(response.data.message);
+          }
 
-      const { message } = await res.json();
-
-      if (res.status === 400) {
-        throw new Error(message);
+      }else{
+        let msg = "Password not Matched";
+        toast.error(msg);
       }
-
       setLoading(false);
-      toast.success(message);
-      navigate("/login");
     } catch (error) {
+      // alert("error regi ");
       toast.error(error.message);
       setLoading(false);
     }
@@ -120,7 +151,19 @@ const Signup = () => {
                 />
               </div>
 
-              <div className="mb-5 flex items-center justify-between">
+              <div className="mb-5">
+                <input
+                  type="password"
+                  name="confirmPassword"
+                  placeholder="Confirm Password"
+                  value={formData.confirmPassword}
+                  onChange={handleInputChange}
+                  className="w-full pr-4 py-3 border-b border-solid border-[#1bcc20] focus:outline-none focus:border-b-[#1bcc20] text-[16px] leading-7 text-headingColor placeholder:text-textColor"
+                  required
+                />
+              </div>
+
+              {/* <div className="mb-5 flex items-center justify-between">
                 <label className="text-headingColor font-bold text-[16px] leading-7">
                   Are you a:
                   <select
@@ -147,9 +190,9 @@ const Signup = () => {
                     <option value="female">Female</option>
                   </select>
                 </label>
-              </div>
+              </div> */}
 
-              <div className="mb-5 flex items-center gap-3">
+              {/* <div className="mb-5 flex items-center gap-3">
                 {selectedFile && (
                   <figure className="w-[60px] h-[60px] rounded-full border-2 border-solid border-lime-500 flex items-center">
                     <img
@@ -176,7 +219,7 @@ const Signup = () => {
                     {selectedFile ? selectedFile.name : "Upload photo"}
                   </label>
                 </div>
-              </div>
+              </div> */}
 
               <div className="mt-7">
                 <button

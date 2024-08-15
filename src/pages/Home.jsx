@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import heroImg01 from "../assets/images/hero-img01.png";
+import heroImg00 from "../assets/images/doc_pic2.png";
+
 import heroImg02 from "../assets/images/hero-img02.png";
 import heroImg03 from "../assets/images/hero-img03.png";
 import icon01 from "../assets/images/icon01.png";
@@ -16,6 +18,11 @@ import featureImg from "../assets/images/feature-img.png";
 import videoIcon from "../assets/images/video-icon.png";
 import avatarIcon from "../assets/images/avatar-icon.png";
 import faqImg from "../assets/images/faq-img.png";
+import  "../assets/css/home.css";
+
+
+
+
 const Home = () => {
   return (
     <>
@@ -69,16 +76,16 @@ const Home = () => {
 
             {/* =========== hero img ============ */}
             <div className="flex gap-[30px] justify-end">
-              <div>
-                <img className="w-full" src={heroImg01} alt="hero_img" />
+              <div className="home_hero_img00">
+                <img className="w-full " src={heroImg00} alt="hero_img" />
               </div>
               <div className="mt-[30px]">
-                <img
+                {/* <img
                   className="w-full mb-[30px]"
                   src={heroImg02}
                   alt="hero_img"
-                />
-                <img className="w-full" src={heroImg03} alt="hero_img" />
+                /> */}
+                {/* <img className="w-full" src={heroImg03} alt="hero_img" /> */}
               </div>
             </div>
           </div>
@@ -96,6 +103,7 @@ const Home = () => {
               expert health care.
             </p>
           </div>
+
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-[30px] mt-[30px] lg:mt-[55px]">
             <div className="py-[30px] px-5 ">

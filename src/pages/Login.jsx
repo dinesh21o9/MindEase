@@ -1,9 +1,13 @@
+import React from "react";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BASE_URL } from "../config";
+// import { BASE_URL } from "../config";
 import { AuthContext } from "../context/AuthContext.jsx";
 import { toast } from "react-toastify";
 import HashLoader from "react-spinners/HashLoader";
+import axios from "axios";
+
+const BASE_URL = "http://localhost:7000";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -27,16 +31,18 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await fetch(`${BASE_URL}/auth/login`, {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      // const res = await fetch(`${BASE_URL}/auth/login`, {
+      //   method: "post",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(formData),
+      // });
 
-      const result = await res.json();
-      if (!res.ok) {
+      const res = await axios.post(`${BASE_URL}/login`, formData);
+      // alert("yes yes yes yes y ");
+      const result = await res.data;
+      if (!res.data.isOk) {
         throw new Error(result.message);
       }
 
@@ -50,9 +56,11 @@ const Login = () => {
       });
 
       setLoading(false);
+      // alert("yes yes yes yes y ");
       toast.success(result.message);
       navigate("/home");
     } catch (error) {
+      // alert("no catch no ");
       toast.error(error.message);
       setLoading(false);
     }
