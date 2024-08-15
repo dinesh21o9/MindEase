@@ -13,7 +13,6 @@ const DoctorCard = ({ doctor }) => {
     totalPatients,
     hospital,
     experiences,
-    website
   } = doctor;
 
   return (
@@ -51,7 +50,7 @@ const DoctorCard = ({ doctor }) => {
         </div>
 
         <Link
-          to={website}
+          to={`/doctors/${doctor._id}`}
           className=" w-[44px] h-[44px] rounded-full border border-solid border-[#181A1E] flex  items-center justify-center  group hover:bg-lime-500  hover:border-none"
         >
           <BsArrowRight className="group-hover:text-white w-6 h-5" />
