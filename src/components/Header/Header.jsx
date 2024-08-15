@@ -19,7 +19,10 @@ const Header = () => {
 
   const { user, role, token } = useContext(AuthContext);
 
+  console.log("user : "<< user?.name);
+
   const handleStickyHeader = () => {
+    console.log("user : "<< user?.name)
     window.addEventListener("scroll", () => {
       if (
         document.body.scrollTop > 80 ||
@@ -31,6 +34,7 @@ const Header = () => {
       }
     });
   };
+
 
   useEffect(() => {
     handleStickyHeader();
@@ -73,27 +77,35 @@ const Header = () => {
 
           <div className="flex items-center gap-4">
             {token && user ? (
-              <div>
-                <Link
-                  to={`${
-                    role === "doctor"
-                      ? "/doctors/profile/me"
-                      : "/users/profile/me"
-                  }`}
-                >
-                  {user?.photo ? (
-                    <figure className="w-[35px] h-[35px] rounded-full">
-                      <img
-                        src={user?.photo}
-                        alt=""
-                        className="w-full rounded-full"
-                      />
-                    </figure>
-                  ) : (
-                    <h3>{user?.name}</h3>
-                  )}
-                </Link>
-              </div>
+        //  {     <div>
+        //         <Link
+        //           to={`${
+        //             role === "doctor"
+        //               ? "/doctors/profile/me"
+        //               : "/users/profile/me"
+        //           }`}
+        //         >
+        //           {user?.photo ? (
+        //             <figure className="w-[35px] h-[35px] rounded-full">
+        //               <img
+        //                 src={user?.photo}
+        //                 alt=""
+        //                 className="w-full rounded-full"
+        //               />
+        //             </figure>
+        //           ) : (
+        //             <h3>{user?.name}</h3>
+        //           )}
+        //         </Link>
+        //       </div>
+        //      }
+
+
+
+        <div className="show_name">
+          <h1>Welcome {user.name} </h1>
+        </div>
+
             ) : (
               <Link to="login">
                 <button className="bg-lime-500 text-white py-2 px-6 rounded-[50px] font-[600] h-[44px] flex items-center justify-center">
