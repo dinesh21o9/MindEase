@@ -7,7 +7,7 @@ const userFetchData = (url) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchfData = async () => {
       setLoading(true);
 
       try {
@@ -24,14 +24,16 @@ const userFetchData = (url) => {
         }
 
         setData(result.data);
+        console.log("yoi yoi userDatafetch")
         console.log(result.data);
+
         setLoading(false);
       } catch (error) {
         setLoading(false);
         setError(error.message);
       }
     };
-    fetchData();
+    fetchfData();
   }, [url]);
 
   return {

@@ -117,7 +117,7 @@ const Home = () => {
                 </h2>
                 <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
                   World-class care for everyone. Our health System offers
-                  unmatched, expert health care. From the lab to the clinic.
+                  unmatched, expert health care.
                 </p>
 
               </div>
@@ -134,7 +134,7 @@ const Home = () => {
                 </h2>
                 <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
                   World-class care for everyone. Our health System offers
-                  unmatched, expert health care. From the lab to the clinic.
+                  unmatched, expert health care.
                 </p>
 
               </div>
@@ -150,7 +150,7 @@ const Home = () => {
                 </h2>
                 <p className="text-[16px] leading-7 text-textColor font-[400] mt-4 text-center">
                   World-class care for everyone. Our health System offers
-                  unmatched, expert health care. From the lab to the clinic.
+                  unmatched, expert health care. 
                 </p>
 
               </div>

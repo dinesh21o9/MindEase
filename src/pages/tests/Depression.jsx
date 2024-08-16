@@ -890,11 +890,340 @@
 //  -------- above depresson i workingn cool as it is showing result modal on the same page, ------------
 //-------- below is , cehck to add laoding or laxy loadingn between showingi result and click and after clickn to next --------
 
+// --------- bwleo is very good working --------
+
+// import React, { useState } from 'react';
+// import './DepressionTest.css';
+// import Modal from './Modal';
+// import ResultsPage from './Results';
+// import AnalysisLoader from './AnalysisLoader.jsx';  // Import the new AnalysisLoader component
+
+// const DepressionTest = () => {
+//   const questions = [
+//     "Little interest or pleasure in doing things",
+//     "Feeling down, depressed, or hopeless",
+//     "Trouble falling or staying asleep, or sleeping too much",
+//     "Feeling tired or having little energy",
+//     "Poor appetite or overeating",
+//     "Feeling bad about yourself - or that you are a failure or have let yourself or your family down",
+//     "Trouble concentrating on things, such as reading the newspaper or watching television",
+//     "Moving or speaking so slowly that other people could have noticed. Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual",
+//     "Thoughts that you would be better off dead, or of hurting yourself",
+//     "If you checked off any problems, how difficult have these problems made it for you at work, home, or with other people?"
+//   ];
+
+//   const optionsList = [
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not difficult at all", "Somewhat difficult", "Very difficult", "Extremely difficult"], scores: [1, 0, -1, -2] }
+//   ];
+
+//   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
+//   const [showModal, setShowModal] = useState(false);
+//   const [showLoader, setShowLoader] = useState(false);  // New state to control the loader
+//   const [showResult, setShowResult] = useState(false);
+//   const [totalScore, setTotalScore] = useState(0);
+//   const [analysis, setAnalysis] = useState('');
+
+//   const handleOptionClick = (questionIndex, optionIndex) => {
+//     const newAnswers = [...answers];
+//     newAnswers[questionIndex] = optionIndex;
+//     setAnswers(newAnswers);
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     if (answers.includes(null)) {
+//       setShowModal(true);
+//       return;
+//     }
+
+//     let calculatedScore = 0;
+//     answers.forEach((answerIndex, questionIndex) => {
+//       if (answerIndex !== null) {
+//         calculatedScore += optionsList[questionIndex].scores[answerIndex];
+//       }
+//     });
+
+//     let calculatedAnalysis = "";
+//     if (calculatedScore >= 5) {
+//       calculatedAnalysis = "You seem to be experiencing mild or no depression.";
+//     } else if (calculatedScore >= 0) {
+//       calculatedAnalysis = "You may be experiencing moderate depression.";
+//     } else {
+//       calculatedAnalysis = "You may be experiencing severe depression. Consider reaching out to a healthcare provider.";
+//     }
+
+//     setTotalScore(calculatedScore);
+//     setAnalysis(calculatedAnalysis);
+//     setShowLoader(true);  // Show the loader after submitting the form
+//   };
+
+//   const handleCloseModal = () => {
+//     setShowModal(false);
+//   };
+
+//   const handleAnalysisComplete = () => {
+//     setShowLoader(false);
+//     setShowResult(true);  // Show the results after analysis is complete
+//   };
+
+//   return (
+//     <div className="form-container">
+//       <h1 className="form-title">Depression Test</h1>
+//       <div className="progress-bar">
+//         <div className={`step ${showResult ? '' : 'active'}`}>
+//           <div className="circle"></div>
+//           <p>Test Questions</p>
+//         </div>
+//         <div className={`line ${showResult ? 'completed' : ''}`}></div>
+//         <div className={`step ${showResult ? 'active' : ''}`}>
+//           <div className="circle"></div>
+//           <p>Your Results</p>
+//         </div>
+//       </div>
+
+//       {showLoader ? (
+//         <AnalysisLoader duration={5000} onComplete={handleAnalysisComplete} />  // Show the loader for 5 seconds
+//       ) : showResult ? (
+//         <ResultsPage score={totalScore} analysis={analysis} />
+//       ) : (
+//         <>
+//           <p className="form-instructions">
+//             Over the last 2 weeks, how often have you been bothered by any of the following problems?
+//             <br />Please note, all fields are required.
+//           </p>
+//           <form className="depression-form" onSubmit={handleSubmit}>
+//             {questions.map((question, questionIndex) => (
+//               <div key={questionIndex} className="question-block">
+//                 <p className="question-text">{questionIndex + 1}. {question}</p>
+//                 <div className="options">
+//                   {optionsList[questionIndex].options.map((option, optionIndex) => (
+//                     <button
+//                       type="button"
+//                       key={optionIndex}
+//                       className={`option-button ${answers[questionIndex] === optionIndex ? 'selected' : ''}`}
+//                       onClick={() => handleOptionClick(questionIndex, optionIndex)}
+//                     >
+//                       {option}
+//                     </button>
+//                   ))}
+//                 </div>
+//               </div>
+//             ))}
+//             <button type="submit" className="next-button">Next</button>
+//           </form>
+//         </>
+//       )}
+
+//       <Modal show={showModal} handleClose={handleCloseModal}>
+//         <h2>Incomplete Test</h2>
+//         <p>Please answer all the questions before proceeding.</p>
+//         <button onClick={handleCloseModal}>Close</button>
+//       </Modal>
+//     </div>
+//   );
+// };
+
+// export default DepressionTest;
+
+
+//  ----------- belwo is test for adding new point other then results --------
+
+// import React, { useState } from 'react';
+// import './DepressionTest.css';
+// import Modal from './Modal';
+// import ResultsPage from './Results';
+// import AnalysisLoader from './AnalysisLoader.jsx';
+
+// const DepressionTest = () => {
+//   const questions = [
+//     "Little interest or pleasure in doing things",
+//     "Feeling down, depressed, or hopeless",
+//     "Trouble falling or staying asleep, or sleeping too much",
+//     "Feeling tired or having little energy",
+//     "Poor appetite or overeating",
+//     "Feeling bad about yourself - or that you are a failure or have let yourself or your family down",
+//     "Trouble concentrating on things, such as reading the newspaper or watching television",
+//     "Moving or speaking so slowly that other people could have noticed. Or the opposite - being so fidgety or restless that you have been moving around a lot more than usual",
+//     "Thoughts that you would be better off dead, or of hurting yourself",
+//     "If you checked off any problems, how difficult have these problems made it for you at work, home, or with other people?"
+//   ];
+
+//   const optionsList = [
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not at all", "Several days", "More than half the days", "Nearly every day"], scores: [1, 0, -1, -2] },
+//     { options: ["Not difficult at all", "Somewhat difficult", "Very difficult", "Extremely difficult"], scores: [1, 0, -1, -2] }
+//   ];
+
+//   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
+//   const [showModal, setShowModal] = useState(false);
+//   const [showLoader, setShowLoader] = useState(false);
+//   const [showResult, setShowResult] = useState(false);
+//   const [totalScore, setTotalScore] = useState(0);
+//   const [analysis, setAnalysis] = useState('');
+
+//   // New states for additional analyses
+//   const [mentalStability, setMentalStability] = useState('');
+//   const [anxietyAttackRisk, setAnxietyAttackRisk] = useState('');
+//   const [recommendedActions, setRecommendedActions] = useState('');
+
+//   const handleOptionClick = (questionIndex, optionIndex) => {
+//     const newAnswers = [...answers];
+//     newAnswers[questionIndex] = optionIndex;
+//     setAnswers(newAnswers);
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     if (answers.includes(null)) {
+//       setShowModal(true);
+//       return;
+//     }
+
+//     let calculatedScore = 0;
+//     let stabilityScore = 0;
+//     let anxietyRiskScore = 0;
+
+//     answers.forEach((answerIndex, questionIndex) => {
+//       if (answerIndex !== null) {
+//         const score = optionsList[questionIndex].scores[answerIndex];
+//         calculatedScore += score;
+
+//         // Calculate mental stability based on selected answers (example)
+//         if (questionIndex <= 4) {
+//           stabilityScore += score;
+//         }
+
+//         // Calculate anxiety risk based on selected answers (example)
+//         if (questionIndex >= 5 && questionIndex <= 8) {
+//           anxietyRiskScore += score;
+//         }
+//       }
+//     });
+
+//     let calculatedAnalysis = "";
+//     if (calculatedScore >= 5) {
+//       calculatedAnalysis = "You seem to be experiencing mild or no depression.";
+//     } else if (calculatedScore >= 0) {
+//       calculatedAnalysis = "You may be experiencing moderate depression.";
+//     } else {
+//       calculatedAnalysis = "You may be experiencing severe depression. Consider reaching out to a healthcare provider.";
+//     }
+
+//     // Determine mental stability analysis
+//     let stabilityAnalysis = "";
+//     if (stabilityScore >= 3) {
+//       stabilityAnalysis = "Your mental stability seems to be well-maintained.";
+//     } else if (stabilityScore >= 0) {
+//       stabilityAnalysis = "You may experience occasional instability.";
+//     } else {
+//       stabilityAnalysis = "You might be experiencing significant mental instability.";
+//     }
+
+//     // Determine anxiety attack risk
+//     let anxietyRiskAnalysis = "";
+//     if (anxietyRiskScore >= 3) {
+//       anxietyRiskAnalysis = "Low risk of anxiety attacks.";
+//     } else if (anxietyRiskScore >= 0) {
+//       anxietyRiskAnalysis = "Moderate risk of anxiety attacks.";
+//     } else {
+//       anxietyRiskAnalysis = "High risk of anxiety attacks. Consider speaking with a healthcare provider.";
+//     }
+
+//     // Determine recommended actions
+//     let recommendedActionsAnalysis = "";
+//     if (calculatedScore >= 5) {
+//       recommendedActionsAnalysis = "Continue engaging in positive activities and maintaining social connections.";
+//     } else if (calculatedScore >= 0) {
+//       recommendedActionsAnalysis = "Consider practicing relaxation techniques and seeking support from friends or a counselor.";
+//     } else {
+//       recommendedActionsAnalysis = "It may be beneficial to seek professional help and develop a structured wellness plan.";
+//     }
+
+//     setTotalScore(calculatedScore);
+//     setAnalysis(calculatedAnalysis);
+//     setMentalStability(stabilityAnalysis);
+//     setAnxietyAttackRisk(anxietyRiskAnalysis);
+//     setRecommendedActions(recommendedActionsAnalysis);
+//     setShowLoader(true);
+//   };
+
+//   const handleCloseModal = () => {
+//     setShowModal(false);
+//   };
+
+//   const handleAnalysisComplete = () => {
+//     setShowLoader(false);
+//     setShowResult(true);
+//   };
+
+//   return (
+//     <div className="form-container">
+//       <h1 className="form-title">Depression Test</h1>
+//       <div className="progress-bar">
+//         <div className={`step ${showResult ? '' : 'active'}`}>
+//           <div className="circle"></div>
+//           <p>Test Questions</p>
+//         </div>
+//         <div className={`line ${showResult ? 'completed' : ''}`}></div>
+//         <div className={`step ${showResult ? 'active' : ''}`}>
+//           <div className="circle"></div>
+//           <p>Your Results</p>
+//         </div>
+//       </div>
+
+//       {showLoader ? (
+//         <AnalysisLoader duration={5000} onComplete={handleAnalysisComplete} />
+//       ) : showResult ? (
+//         <ResultsPage
+//           score={totalScore}
+//           analysis={analysis}
+//           mentalStability={mentalStability}
+//           anxietyAttackRisk={anxietyAttackRisk}
+//           recommendedActions={recommendedActions}
+//         />
+//       ) : (
+//         <>
+//           <p className="form-instructions">
+//             Over the last 2 weeks, how often have you been bothered by any of the following problems?
+//             <br />Please note, all fields are required.
+//           </p>
+//           <form className="depression-form" onSubmit={handleSubmit}>
+//             {questions
+
+
+
+
+
+
+
+
+// --------- belwow comp is working very great, ---------
+
+
+
 import React, { useState } from 'react';
 import './DepressionTest.css';
 import Modal from './Modal';
 import ResultsPage from './Results';
-import AnalysisLoader from './AnalysisLoader.jsx';  // Import the new AnalysisLoader component
+import AnalysisLoader from './AnalysisLoader.jsx';
 
 const DepressionTest = () => {
   const questions = [
@@ -923,12 +1252,28 @@ const DepressionTest = () => {
     { options: ["Not difficult at all", "Somewhat difficult", "Very difficult", "Extremely difficult"], scores: [1, 0, -1, -2] }
   ];
 
+
   const [answers, setAnswers] = useState(Array(questions.length).fill(null));
   const [showModal, setShowModal] = useState(false);
-  const [showLoader, setShowLoader] = useState(false);  // New state to control the loader
+  const [showLoader, setShowLoader] = useState(false);
   const [showResult, setShowResult] = useState(false);
   const [totalScore, setTotalScore] = useState(0);
   const [analysis, setAnalysis] = useState('');
+
+  const [mentalStability, setMentalStability] = useState('');
+  const [anxietyAttackRisk, setAnxietyAttackRisk] = useState('');
+  const [recommendedActions, setRecommendedActions] = useState([]);
+
+
+    const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+
+    const handleAnalysisComplete = () => {
+    setShowLoader(false);
+    setShowResult(true);
+  };
 
   const handleOptionClick = (questionIndex, optionIndex) => {
     const newAnswers = [...answers];
@@ -938,19 +1283,31 @@ const DepressionTest = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+  
     if (answers.includes(null)) {
       setShowModal(true);
       return;
     }
-
+  
     let calculatedScore = 0;
+    let stabilityScore = 0;
+    let anxietyRiskScore = 0;
+  
     answers.forEach((answerIndex, questionIndex) => {
       if (answerIndex !== null) {
-        calculatedScore += optionsList[questionIndex].scores[answerIndex];
+        const score = optionsList[questionIndex].scores[answerIndex];
+        calculatedScore += score;
+  
+        if (questionIndex <= 4) {
+          stabilityScore += score;
+        }
+  
+        if (questionIndex >= 5 && questionIndex <= 8) {
+          anxietyRiskScore += score;
+        }
       }
     });
-
+  
     let calculatedAnalysis = "";
     if (calculatedScore >= 5) {
       calculatedAnalysis = "You seem to be experiencing mild or no depression.";
@@ -959,19 +1316,41 @@ const DepressionTest = () => {
     } else {
       calculatedAnalysis = "You may be experiencing severe depression. Consider reaching out to a healthcare provider.";
     }
+  
+let stabilityAnalysis = "";
+if (stabilityScore >= 3) {
+  stabilityAnalysis = "Stable";
+} else if (stabilityScore >= 0) {
+  stabilityAnalysis = "Unstable";
+} else {
+  stabilityAnalysis = "Highly Unstable";
+}
+
+let anxietyRiskAnalysis = "";
+if (anxietyRiskScore >= 3) {
+  anxietyRiskAnalysis = "Low";
+} else if (anxietyRiskScore >= 0) {
+  anxietyRiskAnalysis = "Moderate";
+} else {
+  anxietyRiskAnalysis = "High";
+}
+
+
+let recommendedActionsAnalysis = [];
+if (calculatedScore >= 5) {
+  recommendedActionsAnalysis = ["Maintain your routine", "Keep a positive attitude", "Stay physically active"];
+} else if (calculatedScore >= 0) {
+  recommendedActionsAnalysis = ["Relax and take breaks", "Practice mindfulness", "Engage in light activities"];
+} else {
+  recommendedActionsAnalysis = ["Seek help from a professional", "Talk to someone you trust", "Consider therapy"];
+}
 
     setTotalScore(calculatedScore);
     setAnalysis(calculatedAnalysis);
-    setShowLoader(true);  // Show the loader after submitting the form
-  };
-
-  const handleCloseModal = () => {
-    setShowModal(false);
-  };
-
-  const handleAnalysisComplete = () => {
-    setShowLoader(false);
-    setShowResult(true);  // Show the results after analysis is complete
+    setMentalStability(stabilityAnalysis);
+    setAnxietyAttackRisk(anxietyRiskAnalysis);
+    setRecommendedActions(recommendedActionsAnalysis);
+    setShowLoader(true);
   };
 
   return (
@@ -990,9 +1369,15 @@ const DepressionTest = () => {
       </div>
 
       {showLoader ? (
-        <AnalysisLoader duration={5000} onComplete={handleAnalysisComplete} />  // Show the loader for 5 seconds
+        <AnalysisLoader duration={5000} onComplete={handleAnalysisComplete} />
       ) : showResult ? (
-        <ResultsPage score={totalScore} analysis={analysis} />
+        <ResultsPage
+          score={totalScore}
+          analysis={analysis}
+          mentalStability={mentalStability}
+          anxietyAttackRisk={anxietyAttackRisk}
+          recommendedActions={recommendedActions}
+        />
       ) : (
         <>
           <p className="form-instructions">
@@ -1030,5 +1415,5 @@ const DepressionTest = () => {
     </div>
   );
 };
-
-export default DepressionTest;
+  
+  export default DepressionTest;
