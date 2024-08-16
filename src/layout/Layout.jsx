@@ -6,7 +6,7 @@ const layout = () => {
   return (
     <>
       <Header />
-      <VideoCall />
+      {/* <VideoCall /> */}
       <main>
         <Routers />
       </main>

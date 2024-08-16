@@ -4,17 +4,21 @@ import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 
 const DoctorCard = ({ doctor }) => {
+
+  console.log("hey");
+  // console.log(doctor)
+
   const {
     name,
     avgRating,
     totalRating,
     photo,
     specialization,
-    totalPatients,
-    hospital,
-    experiences,
+    // experiences,
   } = doctor;
 
+  // console.log(doctor)
+  console.log("oui helo yr ");
   return (
     <div className="p-3 lg:p-5">
       <div>
@@ -45,7 +49,7 @@ const DoctorCard = ({ doctor }) => {
       <div className="mt-[18px] lg:mt-5 flex items-center justify-between">
         <div>
           <p className="text-[14px] leading-6 font-[400] text-textColor">
-            At {experiences && experiences[0]?.hospital} Location : {hospital}
+            {/* At {experiences && experiences[0]?.hospital} Location : {hospital} */}
           </p>
         </div>
 

@@ -27,6 +27,17 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
+  //   <ResultsPage
+  //   score={totalScore}
+  //   analysis={analysis}
+  //   mentalStability={anxietyRiskAnalysis}
+  //   anxietyAttackRisk={anxietySeverity}
+  //   recommendedActions={recommendedActions}
+  // />
+
+
+
     try {
       const response = await axios.post(`${BASE_URL}/login`, loginFormData);
       // console.log('Login Response :', response.data);
