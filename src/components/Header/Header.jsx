@@ -262,10 +262,10 @@
 
 // --- belwo is test to add loader between logout to navigate to login ------
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { BiMenu } from "react-icons/bi";
+import { BiMenu } from "react-icons/bi";  
 import { AuthContext } from "../../context/AuthContext.jsx";
 import { NavLink, Link, useNavigate, useLocation } from "react-router-dom"; // Import useLocation
-import logo from "../../assets/images/main_logo3.png";
+import logo from "../../assets/images/illness.png";
 import "../../assets/css/header.css";
 import Loading from "../Loader/Loading.jsx";
 
@@ -330,8 +330,8 @@ const Header = () => {
       <div className="container">
         <div className="flex items-center justify-between">
           {/* logo */}
-          <div className="header_logo">
-            <img src={logo} alt="logo" />
+          <div className="header_logo w-32 h-32 overflow-hidden items-center flex content-center">
+            <img src={logo} alt="logo" className="object-cover"/>
           </div>
 
           {/* menu */}

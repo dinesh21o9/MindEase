@@ -18,7 +18,7 @@ const ServiceCard = ({ item, index }) => {
       </p>
 
       <div className="flex items-center justify-between mt-[30px]">
-        <Link
+        {/* <Link
           to={`/test/${type}`}//To Change
           className="w-[44px] h-[44px] rounded-full border border-solid border-[#181a1e] mt-[30px] mx-auto flex items-center justify-center group hover:bg-lime-500 hover:border-none"
         >
@@ -26,7 +26,7 @@ const ServiceCard = ({ item, index }) => {
           <BsArrowRight className="group-hover:text-white w-6 h-5" />
 
 
-        </Link> 
+        </Link>  */}
         <span
           className="w-[44px] h-[44px] flex items-center justify-center text-[18px] leading-[30px] font-[600] "
           style={{

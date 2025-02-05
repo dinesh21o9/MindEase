@@ -25,7 +25,7 @@ const Routers = () => {
 
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<SignUp />} />
-
+      
       <Route path="/doctors/:id" element={<DoctorDetails />} />
       <Route path="/services" element={<Services />} />
       <Route path="/test/depression" element={<Depression />} />
@@ -33,8 +33,6 @@ const Routers = () => {
       <Route path="/test/ptsd" element={<PTSDTest />} />
       <Route path="/results" element={<ResultsPage />} />
       <Route path="/video_chat" element={<VideoChat />} />
-
-
     </Routes>
   );
 };

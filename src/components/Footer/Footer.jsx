@@ -63,7 +63,7 @@ const Footer = () => {
     <footer className="pt-16 pb-10">
       <div className="container">
         <div className="flex justify-between flex-col md:flex-row flex-wrap gap-[30px]">
-          <div>
+          {/* <div>
             <img src={logo} alt="" />
             <p className="text-[16px] leading-7 font-[400] text-textColor mt-4">
               Copyright © {year} developed by Ashwani Selwal. All rights reserved.
@@ -80,7 +80,7 @@ const Footer = () => {
                 </Link>
               ))}
             </div>
-          </div>
+          </div> */}
 
           <div>
             <h2 className="text-[20px] leading-[30px] font-[700] text-headingColor mb-6">

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import heroImg01 from "../assets/images/hero-img01.png";
-import heroImg00 from "../assets/images/doc_pic2.png";
+import heroImg00 from "../assets/images/home-page-doc.png";
 
 import heroImg02 from "../assets/images/hero-img02.png";
 import heroImg03 from "../assets/images/hero-img03.png";
@@ -29,6 +29,20 @@ const Home = () => {
       <section className="hero__section pt-[60px] 2xl:h-[800px]">
         <div className="container"> 
           <div className="flex flex-col lg:flex-row gap-[90px] items-center justify-between">
+            {/* ====== hero image ========== */}
+            <div className="flex gap-[30px] justify-end">
+              <div className="home_hero_img00">
+                <img className="w-full " src={heroImg00} alt="hero_img" />
+              </div>
+              <div className="mt-[30px]">
+                {/* <img
+                  className="w-full mb-[30px]"
+                  src={heroImg02}
+                  alt="hero_img"
+                /> */}
+                {/* <img className="w-full" src={heroImg03} alt="hero_img" /> */}
+              </div>
+            </div>
             {/* ====== hero content ========== */}
             <div>
               <div className=" lg:w-[570px]">
@@ -36,9 +50,9 @@ const Home = () => {
                   We offer online mental health diagnosis.
                 </h1>
                 <p className="text__para">
-                  Our platform provides a brief assessment using questions 
-                  curated by professional doctors to evaluate your mental health, 
-                  offering a comprehensive report on your current mental state.
+                  MindEase helps you understand your mental well-being with a quick, 
+                  expert-designed assessment. Get personalized insights and recommendations 
+                  for a healthier mind.
                 </p>
                 <Link to="/services">
                   <button className="btn">
@@ -71,21 +85,6 @@ const Home = () => {
                   <span className="w-[100px] h-2 rounded-full bg-irisBlueColor block mt-[-14px]"></span>
                   <p className="text__para">Patient Satisfaction</p>
                 </div>
-              </div>
-            </div>
-
-            {/* =========== hero img ============ */}
-            <div className="flex gap-[30px] justify-end">
-              <div className="home_hero_img00">
-                <img className="w-full " src={heroImg00} alt="hero_img" />
-              </div>
-              <div className="mt-[30px]">
-                {/* <img
-                  className="w-full mb-[30px]"
-                  src={heroImg02}
-                  alt="hero_img"
-                /> */}
-                {/* <img className="w-full" src={heroImg03} alt="hero_img" /> */}
               </div>
             </div>
           </div>
@@ -159,7 +158,7 @@ const Home = () => {
         </div>
       </section>
 
-      <About />
+      {/* <About /> */}
 
       <section>
         <div className="container">
@@ -178,7 +177,7 @@ const Home = () => {
       {/* feature end */}
 
       {/* doctors */}
-      <section>
+      {/* <section>
         <div className="container">
           <div className="xl:w-[470px] mx-auto">
             <h2 className="heading text-center">Our great doctors</h2>
@@ -190,7 +189,7 @@ const Home = () => {
 
           <DoctorList />
         </div>
-      </section>
+      </section> */}
       {/* doctors end */}
 
     </>
