@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import heroImg01 from "../assets/images/hero-img01.png";
 import heroImg00 from "../assets/images/home-page-doc.png";
-
 import heroImg02 from "../assets/images/hero-img02.png";
 import heroImg03 from "../assets/images/hero-img03.png";
 import icon01 from "../assets/images/icon01.png";
@@ -12,7 +11,6 @@ import DoctorList from "../components/Doctors/DoctorList.jsx";
 import Testimonial from "../components/Testimonial/Testimonial.jsx";
 import FaqList from "../components/Faq/FaqList.jsx";
 import { BsArrowRight } from "react-icons/bs";
-
 import ServicesList from "../components/Services/ServicesList";
 import featureImg from "../assets/images/feature-img.png";
 import videoIcon from "../assets/images/video-icon.png";
@@ -29,7 +27,7 @@ const Home = () => {
       <section className="hero__section pt-[60px] 2xl:h-[800px]">
         <div className="container"> 
           <div className="flex flex-col lg:flex-row gap-[90px] items-center justify-between">
-            {/* ====== hero image ========== */}
+            {/* ====== image ========== */}
             <div className="flex gap-[30px] justify-end">
               <div className="home_hero_img00">
                 <img className="w-full " src={heroImg00} alt="hero_img" />
@@ -43,7 +41,7 @@ const Home = () => {
                 {/* <img className="w-full" src={heroImg03} alt="hero_img" /> */}
               </div>
             </div>
-            {/* ====== hero content ========== */}
+            {/* ====== content ========== */}
             <div>
               <div className=" lg:w-[570px]">
                 <h1 className="text-headingColor text-[36px] leading-[46px] md:text-[60px] md:leading-[70px] font-[800] ">
@@ -173,8 +171,6 @@ const Home = () => {
           <ServicesList />
         </div>
       </section>
-
-      {/* feature end */}
 
       {/* doctors */}
       {/* <section>
